@@ -3,13 +3,11 @@ package com.checkbox.checkbox.domain;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
-@Slf4j
 @NoArgsConstructor
 public class Book {
 
@@ -24,9 +22,7 @@ public class Book {
 
     @Builder
     public Book(String title, String author) {
-        log.info("title: " + title);
-        log.info("author: " + author);
-        title = title;
-        author = author;
+        this.title = title;
+        this.author = author;
     }
 }
