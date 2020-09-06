@@ -6,11 +6,11 @@
 </head>
 <body>
 
-<form  action="/book/add" method="POST" name="book">
+<form th:object="${bookRequestAddDto}" th:action="@{/book/add}" method="POST" name="book">
     <label>제목</label>
-    <input type="text" id="title" name="title">
+    <input type="text" th:field="*{title}">
     <label>작가</label>
-    <input type="text" id="author" name="author">
+    <input type="text" th:field="*{author}"}>
     <button type="submit">제출</button>
 </form>
 
