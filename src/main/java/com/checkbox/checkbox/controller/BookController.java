@@ -55,4 +55,14 @@ public class BookController {
 
         return "redirect:/book/list";
     }
+
+    /***
+     * RESTAPI Form
+     * @param bookRequestAddDto
+     * @return
+     */
+    @GetMapping("/book/api/add")
+    public String addRestAPIForm(@ModelAttribute BookRequestAddDto bookRequestAddDto){
+        return "bookAPI/add";
+    }
 }

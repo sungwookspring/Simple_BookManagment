@@ -7,18 +7,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
+@Slf4j
 public class Book_API_Controller {
     private final BookService bookService;
 
-    @GetMapping("/book/api/add")
-    public String addForm(@ModelAttribute BookRequestAddDto bookRequestAddDto){
-        return "bookAPI/add";
-    }
-
     @PostMapping("/book/api/add")
-    public @ResponseBody Long add(@RequestBody BookRequestAddDto requestAddDto){
+    public Long add(@RequestBody BookRequestAddDto requestAddDto){
+        log.info("[*] called");
         Long saveId = bookService.save(requestAddDto);
 
         return saveId;
