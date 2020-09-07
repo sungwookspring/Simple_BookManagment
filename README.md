@@ -31,7 +31,7 @@
 
 # 5. 설계
 ## 5.1 클래스 다이어그램
-![class_diagram](imgs/class_diagram_book.png) 
+![class_diagram](imgs/class_diagram.png) 
 
 <br>
 
