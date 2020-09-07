@@ -49,6 +49,10 @@ logging:
     org.hibernate.type: trace
 ```
 
+# 파일을 여는 방식
+* 설정파일이름을 application-xx.yml로 생성
+* 
 
 # 참고자료
-* https://galid1.tistory.com/664
+* [1] 블로그: https://galid1.tistory.com/664
+* [2] 공식문서: https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-external-config
