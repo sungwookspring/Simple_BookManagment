@@ -27,6 +27,7 @@
 
 # 4. 기술
 - Springboot
+- thymeleaf
 - JPA
 - Docker
 - Jenkins
