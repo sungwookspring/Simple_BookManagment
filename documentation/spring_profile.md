@@ -1,3 +1,6 @@
+# yaml파일 하나에 여러개 프로파일 관리
+* active에 적용할 프로파일 이름 설정
+```
 spring:
   profiles:
     active: proc
@@ -44,3 +47,8 @@ logging:
   level:
     org.hibernate.SQL: debug
     org.hibernate.type: trace
+```
+
+
+# 참고자료
+* https://galid1.tistory.com/664
