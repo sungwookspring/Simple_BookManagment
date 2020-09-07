@@ -21,9 +21,12 @@ public class Book {
 
     private String author;
 
+    private boolean readed;
+
     @Builder
-    public Book(String title, String author) {
+    public Book(String title, String author, boolean readed) {
         this.title = title;
         this.author = author;
+        this.readed = readed;
     }
 }

@@ -34,6 +34,7 @@ public class BookController {
     @GetMapping("/book/list")
     public String listAll(Model model){
         List<BookResponseListallDto> books = bookService.findAll();
+
         model.addAttribute("books", books);
         return "book/list";
     }

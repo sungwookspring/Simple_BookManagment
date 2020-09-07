@@ -23,18 +23,22 @@ public class CheckboxApplication {
 			Book book1 = Book.builder()
 					.title("test1")
 					.author("author1")
+					.readed(true)
 					.build();
 			Book book2 = Book.builder()
 					.title("test2")
 					.author("author2")
+					.readed(true)
 					.build();
 			Book book3 = Book.builder()
 					.title("test3")
 					.author("author3")
+					.readed(false)
 					.build();
 			Book book4 = Book.builder()
 					.title("test4")
 					.author("author5")
+					.readed(false)
 					.build();
 
 			bookRepository.save(book1);

@@ -19,10 +19,7 @@ public class BookService {
 
     @Transactional
     public Long save(BookRequestAddDto requestAddDto){
-        Book book = Book.builder()
-                .title(requestAddDto.getTitle())
-                .author(requestAddDto.getAuthor())
-                .build();
+        Book book = requestAddDto.toEntity();
 
         return bookRepository.save(book).getId();
     }

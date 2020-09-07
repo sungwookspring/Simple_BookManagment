@@ -10,10 +10,12 @@ import lombok.NoArgsConstructor;
 public class BookResponseListallDto {
     private String title;
     private String author;
+    private boolean readed;
 
     @Builder
     public BookResponseListallDto(Book entity) {
         this.title = entity.getTitle();
         this.author = entity.getAuthor();
+        this.readed = entity.isReaded();
     }
 }
