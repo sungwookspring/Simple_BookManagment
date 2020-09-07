@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      table {
+        width: 100%;
+        border: 1px solid #444444;
+        border-collapse: collapse;
+      }
+      th, td {
+        border: 1px solid #444444;
+      }
+    </style>
+</head>
+<body>
+<table >
+    <thead>
+    <tr>
+        <td>title</td>
+        <td>author</td>
+        <td>isreaded</td>
+        <td>수정</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="book : ${books}">
+        <td th:text="${book.getTitle()}"></td>
+        <td th:text="${book.getAuthor()}"></td>
+        <td th:text="${book.isReaded()}"></td>
+        <td><a href="#" th:href="@{/book/api/update/{id} (id=${book.getId()})}">수정</a></td>
+    </tr>
+    </tbody>
+</table>
+
+<input type="submit" value="메인페이지 이동" onclick="location.href='/'">
+</body>
+</html>

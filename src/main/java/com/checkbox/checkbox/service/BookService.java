@@ -50,14 +50,16 @@ public class BookService {
     }
 
     @Transactional
-    public void update(Long id, BookRequestUpdateDto requestUpdateDto){
+    public Long update(Long id, BookRequestUpdateDto requestUpdateDto){
         Book findBook = bookRepository.findById(id)
                 .orElseThrow(
                         () -> new IllegalStateException("존재하지 않은 ID")
                 );
 
         findBook.update(requestUpdateDto.getTitle(),
-                requestUpdateDto.getAuthor(),
-                requestUpdateDto.isReaded());
+                    requestUpdateDto.getAuthor(),
+                    requestUpdateDto.isReaded());
+
+        return id;
     }
 }

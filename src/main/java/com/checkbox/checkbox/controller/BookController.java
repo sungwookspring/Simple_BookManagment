@@ -58,11 +58,25 @@ public class BookController {
 
     /***
      * RESTAPI Form
-     * @param bookRequestAddDto
-     * @return
      */
+
     @GetMapping("/book/api/add")
-    public String addRestAPIForm(@ModelAttribute BookRequestAddDto bookRequestAddDto){
+    public String restapi_addAPIForm(@ModelAttribute BookRequestAddDto bookRequestAddDto){
         return "bookAPI/add";
+    }
+
+    @GetMapping("/book/api/list")
+    public String restapi_listAll(Model model){
+        List<BookResponseListallDto> books = bookService.findAll();
+        model.addAttribute("books", books);
+        return "bookAPI/list";
+    }
+
+    @GetMapping("/book/api/update/{id}")
+    public String restapi_updateForm(@PathVariable Long id, Model model){
+        BookResponseFindOneDto findBook = bookService.findOneById(id);
+
+        model.addAttribute("book", findBook);
+        return "bookAPI/update";
     }
 }
