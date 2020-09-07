@@ -2,6 +2,7 @@ package com.checkbox.checkbox.service;
 
 import com.checkbox.checkbox.domain.Book;
 import com.checkbox.checkbox.domain.Dto.BookRequestAddDto;
+import com.checkbox.checkbox.domain.Dto.BookResponseFindOneDto;
 import com.checkbox.checkbox.repository.BookRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
@@ -20,7 +21,7 @@ public class BookServiceTest {
     BookRepository bookRepository;
 
     @Test
-    public void 책등록_조회(){
+    public void 책등록(){
         //given
         BookRequestAddDto bookRequestAddDto = new BookRequestAddDto();
         bookRequestAddDto.setTitle("title");
@@ -37,5 +38,22 @@ public class BookServiceTest {
 
         Assertions.assertThat(findBook.getTitle()).isEqualTo(bookRequestAddDto.getTitle());
         Assertions.assertThat(findBook.getAuthor()).isEqualTo(bookRequestAddDto.getAuthor());
+    }
+
+    @Test
+    public void 책등록_조회(){
+        //given
+        BookRequestAddDto bookRequestAddDto = new BookRequestAddDto();
+        bookRequestAddDto.setTitle("title");
+        bookRequestAddDto.setAuthor("author");
+
+        //when
+        Long saveId = bookService.save(bookRequestAddDto);
+        BookResponseFindOneDto findBook = bookService.findOneById(saveId);
+
+        //then
+        Assertions.assertThat(findBook.getTitle()).isEqualTo(bookRequestAddDto.getTitle());
+        Assertions.assertThat(findBook.getAuthor()).isEqualTo(bookRequestAddDto.getAuthor());
+
     }
 }

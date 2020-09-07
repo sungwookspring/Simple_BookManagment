@@ -2,6 +2,8 @@ package com.checkbox.checkbox.controller;
 
 import com.checkbox.checkbox.domain.Book;
 import com.checkbox.checkbox.domain.Dto.BookRequestAddDto;
+import com.checkbox.checkbox.domain.Dto.BookRequestUpdateDto;
+import com.checkbox.checkbox.domain.Dto.BookResponseFindOneDto;
 import com.checkbox.checkbox.domain.Dto.BookResponseListallDto;
 import com.checkbox.checkbox.repository.BookRepository;
 import com.checkbox.checkbox.service.BookService;
@@ -34,8 +36,23 @@ public class BookController {
     @GetMapping("/book/list")
     public String listAll(Model model){
         List<BookResponseListallDto> books = bookService.findAll();
-
         model.addAttribute("books", books);
         return "book/list";
+    }
+
+    @GetMapping("/book/update/{id}")
+    public String updateForm(@PathVariable Long id, Model model){
+        BookResponseFindOneDto findBook = bookService.findOneById(id);
+
+        model.addAttribute("book", findBook);
+        return "book/update";
+    }
+
+    @PostMapping("/book/update/{id}")
+    public String update(@PathVariable Long id, @ModelAttribute BookRequestUpdateDto requestUpdateDto) {
+        log.info("[*] called");
+        bookService.update(id, requestUpdateDto);
+
+        return "redirect:/book/list";
     }
 }

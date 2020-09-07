@@ -23,6 +23,15 @@ public class Book {
 
     private boolean readed;
 
+    /***
+     * 비지니스 로직: 수정
+     */
+    public void update(String title, String author, boolean readed){
+        this.title = title;
+        this.author = author;
+        this.readed = readed;
+    }
+    
     @Builder
     public Book(String title, String author, boolean readed) {
         this.title = title;

@@ -21,6 +21,7 @@
         <td>title</td>
         <td>author</td>
         <td>isreaded</td>
+        <td>수정</td>
     </tr>
     </thead>
     <tbody>
@@ -28,6 +29,7 @@
         <td th:text="${book.getTitle()}"></td>
         <td th:text="${book.getAuthor()}"></td>
         <td th:text="${book.isReaded()}"></td>
+        <td><a href="#" th:href="@{/book/update/{id} (id=${book.getId()})}">수정</a></td>
     </tr>
     </tbody>
 </table>
