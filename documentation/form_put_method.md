@@ -1,0 +1,1 @@
+html form 태그에서는 put method를 지원하지 않는다.

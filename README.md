@@ -45,5 +45,5 @@
 ![use_case](imgs/use_case.png)
 
 # 6. Todo
-- [ ] 수정 HTTP Method를 PUT으로 변경
+- [ ] 수정 HTTP Method를 PUT으로 변경 <-- API만 적용 가능
 - [ ] 컨테이너화 과정 중 어떻게 테스트 코드를 돌리는지(DB상관없이)
