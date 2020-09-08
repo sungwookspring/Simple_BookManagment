@@ -43,6 +43,9 @@ $ java -jar checkbox-0.0.1-SNAPSHOT.jar --spring.profiles.active=../../src/main/
 # 4. 요구사항
 - [x] 사용자는 책을 등록할 수 있어야 한다.
 - [x] 사용자는 책을 읽었는지 안읽었는지 선택할 수 있어야 한다.
+- [x] 사용자는 등록한 책 정보를 수정할 수 있어야 한다.
+- [x] 사용자는 등록한 책을 삭제 할 수 있어야 한다.
+- [x] 위 요구 사항을 API와 FORM형식으로 구현해야 한다.
 
 <br>
 
@@ -69,5 +72,5 @@ $ java -jar checkbox-0.0.1-SNAPSHOT.jar --spring.profiles.active=../../src/main/
 <br>
 
 # 7. Todo
-- [ ] 수정 HTTP Method를 PUT으로 변경 <-- API만 적용 가능
-- [ ] 컨테이너화 과정 중 어떻게 테스트 코드를 돌리는지(DB상관없이)
+- [x] 수정 HTTP Method를 PUT으로 변경 <-- API만 적용 가능
+- [x] 컨테이너화 과정 중 어떻게 테스트 코드를 돌리는지(DB상관없이)
