@@ -26,8 +26,7 @@ gradlew -Dspring.profiles.active=prod clean build
 java -jar builded.jar --spring.profiles.active=../../src/main/resources/application-prod.yaml
 ```
 
-
-
 # 참고자료
 * [1] 블로그: https://lejewk.github.io/springboot-gradle-spring-profiles-active/
 * [2] 스택오버플로우 번역: https://cnpnote.tistory.com/entry/SPRING-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%86%8D%EC%84%B1%EC%9D%84-Gradle-%EC%9E%91%EC%97%85%EC%97%90-%EC%A0%84%EB%8B%AC%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95
+* [3] 영상: https://www.youtube.com/watch?v=P91tqdWUHE4
