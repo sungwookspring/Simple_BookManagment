@@ -15,25 +15,51 @@
     </style>
 </head>
 <body>
-<table >
+<table>
     <thead>
     <tr>
         <td>title</td>
         <td>author</td>
         <td>isreaded</td>
-        <td>수정</td>
+        <td>수정버튼</td>
+        <td>삭제버튼</td>
     </tr>
     </thead>
     <tbody>
     <tr th:each="book : ${books}">
-        <td th:text="${book.getTitle()}"></td>
-        <td th:text="${book.getAuthor()}"></td>
-        <td th:text="${book.isReaded()}"></td>
-        <td><a href="#" th:href="@{/book/api/update/{id} (id=${book.getId()})}">수정</a></td>
+        <td th:text="${book.id}"></td>
+        <td th:text="${book.author}"></td>
+        <td th:text="${book.readed}"></td>
+        <td><a href="#" th:href="@{/book/api/update/{id} (id=${book.id})}">수정</a></td>
+        <td><button type="submit" id="submit-deleteapi-book" th:data-args="${book.id}">삭제</button></td>
     </tr>
     </tbody>
 </table>
-
 <input type="submit" value="메인페이지 이동" onclick="location.href='/'">
+
+<!--import jquery CDN-->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    $(document).ready(function() {
+      $('#submit-deleteapi-book').on('click', function(e){
+          e.preventDefault();
+
+          var id = e.target.getAttribute('data-args');
+          console.log(id);
+          $.ajax({
+              type: 'delete',
+              url: '/book/api/delete/' + id,
+              dataType: 'json',
+              contentType: 'application/json; charset=utf-8',
+          }).done(function (){
+              alert('글이 삭제되었습니다');
+              window.location.href = '/book/api/list';
+          }).fail(function (error){
+              alert(JSON.stringify(error));
+          });
+      });
+    });
+</script>
+
 </body>
 </html>
