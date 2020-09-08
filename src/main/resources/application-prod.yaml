@@ -1,0 +1,21 @@
+spring:
+  profiles: prod
+
+  datasource:
+    url: jdbc:mariadb://127.0.0.1:3306/bookmanagement
+    username: testuser
+    password: password
+    driver-class-name: org.mariadb.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MariaDB53Dialect
+        format_sql: true
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.type: trace
