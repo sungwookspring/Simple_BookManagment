@@ -3,7 +3,7 @@
 ```
 spring:
   profiles:
-    active: proc
+    active: prod
 ---
 spring:
   profiles: dev
@@ -27,7 +27,7 @@ logging:
     org.hibernate.type: trace
 ---
 spring:
-  profiles: proc
+  profiles: prod
 
   datasource:
     url: jdbc:mariadb://localhost:3306/bookmanagement
