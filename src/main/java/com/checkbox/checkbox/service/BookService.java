@@ -62,4 +62,16 @@ public class BookService {
 
         return id;
     }
+
+    @Transactional
+    public Long delete(Long id) {
+        Book book = bookRepository.findById(id)
+                .orElseThrow(
+                        () -> new IllegalStateException("존재하지 않은 ID로 삭제 실패")
+                );
+
+        bookRepository.delete(book);
+
+        return id;
+    }
 }

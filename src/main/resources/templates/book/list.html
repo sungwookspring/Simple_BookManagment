@@ -21,15 +21,17 @@
         <td>title</td>
         <td>author</td>
         <td>isreaded</td>
-        <td>수정</td>
+        <td>수정버튼</td>
+        <td>삭제버튼</td>
     </tr>
     </thead>
     <tbody>
     <tr th:each="book : ${books}">
-        <td th:text="${book.getTitle()}"></td>
-        <td th:text="${book.getAuthor()}"></td>
-        <td th:text="${book.isReaded()}"></td>
-        <td><a href="#" th:href="@{/book/update/{id} (id=${book.getId()})}">수정</a></td>
+        <td th:text="${book.title}"></td>
+        <td th:text="${book.author}"></td>
+        <td th:text="${book.readed}"></td>
+        <td><a href="#" th:href="@{/book/update/{id} (id=${book.id})}">수정</a></td>
+        <td><a href="#" th:href="@{/book/delete/{id} (id=${book.id})}">삭제</a></td>
     </tr>
     </tbody>
 </table>

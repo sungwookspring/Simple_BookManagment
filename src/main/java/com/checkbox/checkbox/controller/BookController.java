@@ -56,6 +56,13 @@ public class BookController {
         return "redirect:/book/list";
     }
 
+    @GetMapping("/book/delete/{id}")
+    public String delete(@PathVariable Long id){
+        bookService.delete(id);
+
+        return "redirect:/book/list";
+    }
+
     /***
      * RESTAPI Form
      */
