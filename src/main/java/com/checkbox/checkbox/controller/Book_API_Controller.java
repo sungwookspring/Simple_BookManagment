@@ -31,4 +31,11 @@ public class Book_API_Controller {
 
         return updateId;
     }
+
+    @DeleteMapping("/book/api/delete/{id}")
+    public Long delete(@PathVariable Long id){
+        Long deleteId =  bookService.delete(id);
+
+        return deleteId;
+    }
 }
