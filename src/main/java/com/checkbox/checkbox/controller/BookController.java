@@ -1,10 +1,9 @@
 package com.checkbox.checkbox.controller;
 
-import com.checkbox.checkbox.domain.Book;
-import com.checkbox.checkbox.domain.Dto.BookRequestAddDto;
-import com.checkbox.checkbox.domain.Dto.BookRequestUpdateDto;
-import com.checkbox.checkbox.domain.Dto.BookResponseFindOneDto;
-import com.checkbox.checkbox.domain.Dto.BookResponseListallDto;
+import com.checkbox.checkbox.domain.Dto.Book.BookRequestAddDto;
+import com.checkbox.checkbox.domain.Dto.Book.BookRequestUpdateDto;
+import com.checkbox.checkbox.domain.Dto.Book.BookResponseFindOneDto;
+import com.checkbox.checkbox.domain.Dto.Book.BookResponseListallDto;
 import com.checkbox.checkbox.repository.BookRepository;
 import com.checkbox.checkbox.service.BookService;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package com.checkbox.checkbox.domain.Dto;
+package com.checkbox.checkbox.domain.Dto.Book;
 
 import com.checkbox.checkbox.domain.Book;
 import lombok.Getter;

@@ -1,8 +1,8 @@
 package com.checkbox.checkbox.service;
 
 import com.checkbox.checkbox.domain.Book;
-import com.checkbox.checkbox.domain.Dto.BookRequestAddDto;
-import com.checkbox.checkbox.domain.Dto.BookResponseFindOneDto;
+import com.checkbox.checkbox.domain.Dto.Book.BookRequestAddDto;
+import com.checkbox.checkbox.domain.Dto.Book.BookResponseFindOneDto;
 import com.checkbox.checkbox.repository.BookRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;

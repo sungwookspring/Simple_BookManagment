@@ -1,13 +1,10 @@
 package com.checkbox.checkbox.controller;
 
-import com.checkbox.checkbox.domain.Dto.BookRequestAddDto;
-import com.checkbox.checkbox.domain.Dto.BookRequestUpdateDto;
-import com.checkbox.checkbox.domain.Dto.BookResponseFindOneDto;
+import com.checkbox.checkbox.domain.Dto.Book.BookRequestAddDto;
+import com.checkbox.checkbox.domain.Dto.Book.BookRequestUpdateDto;
 import com.checkbox.checkbox.service.BookService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
