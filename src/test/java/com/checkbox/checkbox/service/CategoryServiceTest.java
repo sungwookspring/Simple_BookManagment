@@ -31,6 +31,8 @@ public class CategoryServiceTest {
     BookCategoryRepository bookCategoryRepository;
     @Autowired
     BookRepository bookRepository;
+    @Autowired
+    BookCategoryService bookCategoryService;
 
     @Test
     public void save(){
@@ -80,7 +82,7 @@ public class CategoryServiceTest {
                 .category(savedCategory)
                 .build();
 
-        Long savedBookCategoryId = bookCategoryRepository.save(bookCategory).getId();
+        Long savedBookCategoryId = bookCategoryService.save(bookCategory);
         BookCategory findBookCategory = bookCategoryRepository.findById(savedBookCategoryId)
                 .orElseThrow(
                         () -> new IllegalStateException("존재하지 않은 savedBookCategoryId")
