@@ -17,4 +17,9 @@ public class CategoryRequestAddDto {
                 .name(this.name)
                 .build();
     }
+
+    @Builder
+    public CategoryRequestAddDto(String name){
+        this.name = name;
+    }
 }
