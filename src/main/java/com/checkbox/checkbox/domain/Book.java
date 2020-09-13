@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -22,6 +23,9 @@ public class Book {
     private String author;
 
     private boolean readed;
+
+    @OneToMany(mappedBy = "book")
+    private List<BookCategory> bookCategories;
 
     /***
      * 비지니스 로직: 수정
