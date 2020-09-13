@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -25,7 +26,16 @@ public class Book {
     private boolean readed;
 
     @OneToMany(mappedBy = "book")
-    private List<BookCategory> bookCategories;
+    private List<BookCategory> bookCategories = new ArrayList<>();
+
+    /***
+     * 연관관계 설정
+     * @param bookCategory
+     */
+    public void setRelationWithBookCategory(BookCategory bookCategory){
+        this.bookCategories.add(bookCategory);
+        bookCategory.setBook(this);
+    }
 
     /***
      * 비지니스 로직: 수정
