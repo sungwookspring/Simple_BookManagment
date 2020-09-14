@@ -9,12 +9,12 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class RequestAddForm_CategoryDto {
-    private Long id;
+    private Long category_id;
     private String name;
 
     @Builder
     public RequestAddForm_CategoryDto(Long id, String name){
-        this.id = id;
+        this.category_id = id;
         this.name = name;
     }
 }
