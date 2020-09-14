@@ -59,7 +59,7 @@ public class CheckboxApplication {
 					.name("교양")
 					.build();
 
-			createCategoryHelper("교약");
+			createCategoryHelper("교양");
 			createCategoryHelper("인문");
 			createCategoryHelper("과학");
 		};
