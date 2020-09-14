@@ -6,6 +6,10 @@
     <title>Title</title>
 </head>
 <body>
+<div id="wrapper">
+    <header th:replace="fragments/header :: header"></header>
+    <nav id="sidebar"></nav>
+    <section id="content">
     <form th:object="${book}" th:action="@{/book/update/{id} (id=${book.id})}" method="POST">
         <label>제목</label>
         <input type="text" th:field="*{title}">
@@ -15,5 +19,7 @@
         <input type="checkbox" th:field="*{readed}">
         <button type="submit">수정</button>
     </form>
+    </section>
+</div>
 </body>
 </html>

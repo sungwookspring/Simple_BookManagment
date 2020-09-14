@@ -6,47 +6,47 @@
     <title>$Title$</title>
 </head>
 <body>
+    <div id="wrapper">
+        <header th:replace="fragments/header :: header"></header>
+        <nav id="sidebar"></nav>
+        <section id="content">
+            <form>
+                <label>제목</label>
+                <input type="text" id="title">
+                <label>작가</label>
+                <input type="text" id="author">
+                <label>읽었는지</label>
+                <input type="checkbox" id="isreaded">
+                <button type="submit" id="submit-add-book">제출</button>
+            </form>
+        </section>
+    </div>
+    <!--import jquery CDN-->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#submit-add-book').on('click', function(e){
+                e.preventDefault();
 
-<form>
-    <label>제목</label>
-    <input type="text" id="title">
-    <label>작가</label>
-    <input type="text" id="author">
-    <label>읽었는지</label>
-    <input type="checkbox" id="isreaded">
-
-    <button type="submit" id="submit-add-book">제출</button>
-</form>
-
-<input type="submit" value="메인페이지 이동" onclick="location.href='/'">
-
-<!--import jquery CDN-->
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-
-<script>
-    $(document).ready(function() {
-        $('#submit-add-book').on('click', function(e){
-            e.preventDefault();
-            
-            var data = {
-                title: $('#title').val(),
-                author: $('#author').val(),
-                isreaded: $('#isreaded').is(":checked")
-            };
-            $.ajax({
-                type: 'POST',
-                url: '/book/api/add',
-                dataType: 'json',
-                contentType: 'application/json; charset=utf-8',
-                data: JSON.stringify(data)
-            }).done(function (){
-                alert('글이 등록되었습니다');
-                window.location.href = '/book/list';
-            }).fail(function (error){
-                alert(JSON.stringify(error));
+                var data = {
+                    title: $('#title').val(),
+                    author: $('#author').val(),
+                    isreaded: $('#isreaded').is(":checked")
+                };
+                $.ajax({
+                    type: 'POST',
+                    url: '/book/api/add',
+                    dataType: 'json',
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify(data)
+                }).done(function (){
+                    alert('글이 등록되었습니다');
+                    window.location.href = '/book/list';
+                }).fail(function (error){
+                    alert(JSON.stringify(error));
+                });
             });
         });
-    });
-</script>
+    </script>
 </body>
 </html>

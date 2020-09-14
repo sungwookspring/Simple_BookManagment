@@ -6,16 +6,20 @@
     <div th:replace="fragments/config :: config"></div>
 </head>
 <body>
-
-<form th:object="${bookRequestAddDto}" th:action="@{/book/add}" method="POST" name="book">
-    <label>제목</label>
-    <input type="text" th:field="*{title}">
-    <label>작가</label>
-    <input type="text" th:field="*{author}"}>
-    <label>읽었는지</label>
-    <input type="checkbox" th:field="*{isreaded}">
-    <button type="submit">제출</button>
-</form>
-<input type="submit" value="메인페이지 이동" onclick="location.href='/'">
+<div id="wrapper">
+    <header th:replace="fragments/header :: header"></header>
+    <nav id="sidebar"></nav>
+    <section id="content">
+        <form th:object="${bookRequestAddDto}" th:action="@{/book/add}" method="POST" name="book">
+            <label>제목</label>
+            <input type="text" th:field="*{title}">
+            <label>작가</label>
+            <input type="text" th:field="*{author}"}>
+            <label>읽었는지</label>
+            <input type="checkbox" th:field="*{isreaded}">
+            <button type="submit">제출</button>
+        </form>
+    </section>
+</div>
 </body>
 </html>

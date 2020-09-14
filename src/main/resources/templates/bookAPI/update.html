@@ -6,44 +6,48 @@
     <title>Title</title>
 </head>
 <body>
-<form th:object="${book}" th:action="@{/book/update/{id} (id=${book.id})}" method="POST">
-    <label>제목</label>
-    <input type="text" th:field="*{title}">
-    <label>작가</label>
-    <input type="text" th:field="*{author}">
-    <label>읽었는지</label>
-    <input type="checkbox" th:field="*{readed}">
-    <button type="submit" id="submit-update-book">수정</button>
-</form>
+    <div id="wrapper">
+        <header th:replace="fragments/header :: header"></header>
+        <nav id="sidebar"></nav>
+        <section id="content">
+            <form th:object="${book}" th:action="@{/book/update/{id} (id=${book.id})}" method="POST">
+                <label>제목</label>
+                <input type="text" th:field="*{title}">
+                <label>작가</label>
+                <input type="text" th:field="*{author}">
+                <label>읽었는지</label>
+                <input type="checkbox" th:field="*{readed}">
+                <button type="submit" id="submit-update-book">수정</button>
+            </form>
+        </section>
+    </div>
 
-<!--import jquery CDN-->
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-
-<script>
-    $(document).ready(function() {
-        $('#submit-update-book').on('click', function(e){
-            e.preventDefault();
-            var id = $('#id')
-            var data = {
-                title: $('#title').val(),
-                author: $('#author').val(),
-                readed: $('#readed').is(":checked")
-            };
-            $.ajax({
-                type: 'put',
-                url: '/book/api/update/' + [[${book.id}]],
-                dataType: 'json',
-                contentType: 'application/json; charset=utf-8',
-                data: JSON.stringify(data)
-            }).done(function (){
-                alert('글이 등록되었습니다');
-                window.location.href = '/book/api/list';
-            }).fail(function (error){
-                alert(JSON.stringify(error));
+    <!--import jquery CDN-->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#submit-update-book').on('click', function(e){
+                e.preventDefault();
+                var id = $('#id')
+                var data = {
+                    title: $('#title').val(),
+                    author: $('#author').val(),
+                    readed: $('#readed').is(":checked")
+                };
+                $.ajax({
+                    type: 'put',
+                    url: '/book/api/update/' + [[${book.id}]],
+                    dataType: 'json',
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify(data)
+                }).done(function (){
+                    alert('글이 등록되었습니다');
+                    window.location.href = '/book/api/list';
+                }).fail(function (error){
+                    alert(JSON.stringify(error));
+                });
             });
         });
-    });
-</script>
-
+    </script>
 </body>
 </html>
