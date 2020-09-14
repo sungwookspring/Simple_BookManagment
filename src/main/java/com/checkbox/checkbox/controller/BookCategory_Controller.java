@@ -1,7 +1,9 @@
 package com.checkbox.checkbox.controller;
 
 import com.checkbox.checkbox.domain.Book;
+import com.checkbox.checkbox.domain.BookCategory;
 import com.checkbox.checkbox.domain.Category;
+import com.checkbox.checkbox.domain.Dto.BookCategory.BookCategoryRequestAddDto;
 import com.checkbox.checkbox.domain.Dto.BookCategory.BookCategoryRequestAddFormDto;
 import com.checkbox.checkbox.domain.Dto.BookCategory.RequestAddForm_BookDto;
 import com.checkbox.checkbox.domain.Dto.BookCategory.RequestAddForm_CategoryDto;
@@ -12,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
@@ -22,6 +25,7 @@ import java.util.List;
 public class BookCategory_Controller {
     private final CategoryService categoryService;
     private final BookService bookService;
+    private final BookCategoryService bookCategoryService;
 
     @GetMapping("/book/category_book/add")
     public String saveForm(Model model){
@@ -58,8 +62,9 @@ public class BookCategory_Controller {
         return "book_category/setRelation";
     }
 
-    @PostMapping("/book/category/add")
-    public String save(){
-        return "book_category/setRelation";
+    @PostMapping("/book/category_book/add")
+    public String save(@ModelAttribute BookCategoryRequestAddDto bookCategoryRequestAddDto){
+        Long saveId = bookCategoryService.save(bookCategoryRequestAddDto);
+        return "redirect:/";
     }
 }
