@@ -28,14 +28,10 @@ public class BookService {
         return bookRepository.save(book).getId();
     }
 
-    public List<BookResponseListallDto> findAll(){
-        List<BookResponseListallDto> responseDto = new ArrayList<>();
+    public List<Book> findAll(){
         List<Book> books = bookRepository.findAll();
 
-        books.forEach(book -> responseDto.add(BookResponseListallDto.builder()
-                .entity(book).build()));
-
-        return responseDto;
+        return books;
     }
 
     public BookResponseFindOneDto findOneById(Long id){

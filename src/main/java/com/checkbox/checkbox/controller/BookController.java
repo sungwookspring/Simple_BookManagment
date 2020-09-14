@@ -1,5 +1,6 @@
 package com.checkbox.checkbox.controller;
 
+import com.checkbox.checkbox.domain.Book;
 import com.checkbox.checkbox.domain.Dto.Book.BookRequestAddDto;
 import com.checkbox.checkbox.domain.Dto.Book.BookRequestUpdateDto;
 import com.checkbox.checkbox.domain.Dto.Book.BookResponseFindOneDto;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -34,8 +36,13 @@ public class BookController {
 
     @GetMapping("/book/list")
     public String listAll(Model model){
-        List<BookResponseListallDto> books = bookService.findAll();
-        model.addAttribute("books", books);
+        List<Book> books = bookService.findAll();
+        List<BookResponseListallDto> responseDto = new ArrayList<>();
+
+        books.forEach(book -> responseDto.add(BookResponseListallDto.builder()
+                .entity(book).build()));
+
+        model.addAttribute("books", responseDto);
         return "book/list";
     }
 
@@ -73,8 +80,13 @@ public class BookController {
 
     @GetMapping("/book/api/list")
     public String restapi_listAll(Model model){
-        List<BookResponseListallDto> books = bookService.findAll();
-        model.addAttribute("books", books);
+        List<Book> books = bookService.findAll();
+        List<BookResponseListallDto> responseDto = new ArrayList<>();
+
+        books.forEach(book -> responseDto.add(BookResponseListallDto.builder()
+                .entity(book).build()));
+
+        model.addAttribute("books", responseDto);
         return "bookAPI/list";
     }
 
