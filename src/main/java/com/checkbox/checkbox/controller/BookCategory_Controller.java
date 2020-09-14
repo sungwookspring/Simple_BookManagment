@@ -53,7 +53,7 @@ public class BookCategory_Controller {
                 .categories(categoryDtos)
                 .build();
 
-        model.addAttribute("books", bookcategories);
+        model.addAttribute("bookcategories", bookcategories);
 
         return "book_category/setRelation";
     }
