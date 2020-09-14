@@ -14,6 +14,8 @@ import java.util.List;
 public class BookCategoryRequestAddFormDto {
     private List<RequestAddForm_BookDto> books = new ArrayList<>();
     private List<RequestAddForm_CategoryDto> categories = new ArrayList<>();
+    private Long book_id; // for submit
+    private Long category_id; //for submit
 
     public void addBook(RequestAddForm_BookDto bookDto){
         this.books.add(bookDto);

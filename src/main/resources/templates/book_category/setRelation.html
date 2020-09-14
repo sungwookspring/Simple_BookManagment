@@ -10,20 +10,20 @@
     <header th:replace="fragments/header :: header"></header>
     <nav id="sidebar"></nav>
     <section id="content">
-        <form th:object="${bookcategories}" th:action="@{/category/add}" method="POST">
+        <form th:object="${bookcategories}" th:action="@{/book/category_book/add}" method="POST">
             <h3><label>책</label></h3>
-            <select>
+            <select th:field="*{book_id}">
                 <option value="">책 선택</option>
                 <option th:each="book, itemStat : *{books}"
-                        th:value="*{books[__${itemStat.index}__].title}"
+                        th:value="*{books[__${itemStat.index}__].book_id}"
                         th:text="*{books[__${itemStat.index}__].title}"
                 />
             </select>
 
-            <select>
+            <select th:field="*{category_id}">
                 <option value="">카테고리 선택</option>
                 <option th:each="category, itemStat : *{categories}"
-                        th:value="*{categories[__${itemStat.index}__].name}"
+                        th:value="*{categories[__${itemStat.index}__].category_id}"
                         th:text="*{categories[__${itemStat.index}__].name}"
                 />
             </select>
