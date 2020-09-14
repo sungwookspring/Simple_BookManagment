@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/config :: config"></div>
+    <meta charset="UTF-8">
+    <title>카테고리 등록 페이지</title>
+</head>
+<body>
+<div id="wrapper">
+    <header th:replace="fragments/header :: header"></header>
+    <nav id="sidebar"></nav>
+    <section id="content">
+        <form th:object="${requestAddDto}" th:action="@{/category/add}" method="POST">
+            <h3><label>카테고리 이름</label></h3>
+            <h3><input th:field="*{name}" type="text"></h3>
+            <button type="submit">카테고리 등록</button>
+        </form>
+    </section>
+</div>
+</body>
+</html>
