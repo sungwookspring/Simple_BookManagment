@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @Slf4j
@@ -37,10 +38,9 @@ public class BookController {
     @GetMapping("/book/list")
     public String listAll(Model model){
         List<Book> books = bookService.findAll();
-        List<BookResponseListallDto> responseDto = new ArrayList<>();
-
-        books.forEach(book -> responseDto.add(BookResponseListallDto.builder()
-                .entity(book).build()));
+        List<BookResponseListallDto> responseDto = books.stream()
+            .map(book -> new BookResponseListallDto(book))
+            .collect(Collectors.toList());
 
         model.addAttribute("books", responseDto);
         return "book/list";
