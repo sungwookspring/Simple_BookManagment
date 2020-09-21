@@ -32,6 +32,9 @@ $ java -jar checkbox-0.0.1-SNAPSHOT.jar --spring.profiles.active=../../src/main/
 - [x] 책 등록: API 요청
 - [x] 책 수정: API 요청
 - [x] 책 삭제: API 요청
+- [x] 카테고리 등록: Form 요청 방식
+- [x] 카테고리 조회
+- [ ] 책<->카테고리 연결
 - [x] 스프링부트 프로필관리: 개발, 배포
 - [ ] 컨테이너화
 - [ ] CI
