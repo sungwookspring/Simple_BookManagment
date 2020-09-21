@@ -36,7 +36,11 @@
                 <td th:text="${book.title}"></td>
                 <td th:text="${book.author}"></td>
                 <td th:text="${book.readed}"></td>
-                <td>빈 카테고리</td>
+                <td>
+                    <div th:each=" bookCategories : ${book.bookCategories}">
+                        <label th:text="${bookCategories.category_name}"></label>
+                    </div>
+                </td>
                 <td><a href="#" th:href="@{/book/update/{id} (id=${book.id})}" style="color: blue">수정</a></td>
                 <td><a href="#" th:href="@{/book/delete/{id} (id=${book.id})}" style="color: blue">삭제</a></td>
             </tr>
