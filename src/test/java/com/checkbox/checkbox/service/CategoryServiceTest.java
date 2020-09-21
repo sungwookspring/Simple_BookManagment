@@ -83,6 +83,42 @@ public class CategoryServiceTest {
         Assertions.assertThat(findBookName).isEqualTo(savedBook.getTitle());
     }
 
+    @Test
+    @Transactional
+    public void createBook_createCategories_AndDoRelation(){
+        // 책 생성
+        Book savedBook =  createbook_checkId("테스트 책", "테스트 작가");
+
+        //여러개 카테고리 생성과 테스트
+        for(int i=0; i<10; i++){
+            Category savedCategory = createCategory_checkId("테스트 카테고리" + Integer.toString(i));
+            BookCategory findBookCategory = createBookCategory(savedBook.getId(), savedCategory.getId());
+            checkValidation_bookCategory(savedBook, savedCategory, findBookCategory);
+        }
+
+        //책 한개에 연결된 다수의 카테고리를 리스트로 출력
+        savedBook.getBookCategories().forEach(
+                bookCategory -> System.out.println(bookCategory.getCategory().getName())
+        );
+    }
+
+    private void checkValidation_bookCategory(Book savedBook, Category savedCategory, BookCategory findBookCategory){
+        // Id 비교
+        Long findCategoryId = findBookCategory.getCategory().getId();
+        Long findBookId =  findBookCategory.getBook().getId();
+
+        Assertions.assertThat(findCategoryId).isEqualTo(savedCategory.getId());
+        Assertions.assertThat(findBookId).isEqualTo(savedBook.getId());
+
+        // 이름 비교
+        String findCategoryName = findBookCategory.getCategory().getName();
+        String findBookName =  findBookCategory.getBook().getTitle();
+
+        Assertions.assertThat(findCategoryName).isEqualTo(savedCategory.getName());
+        Assertions.assertThat(findBookName).isEqualTo(savedBook.getTitle());
+    }
+
+
     private BookCategory createBookCategory(Long book_id, Long category_id){
         BookCategoryRequestAddDto requestAddDto = new BookCategoryRequestAddDto();
         requestAddDto.setBook_id(book_id);
