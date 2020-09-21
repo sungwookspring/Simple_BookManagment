@@ -23,11 +23,12 @@
         <table>
             <thead>
             <tr>
-                <td>title</td>
-                <td>author</td>
-                <td>isreaded</td>
-                <td>수정버튼</td>
-                <td>삭제버튼</td>
+                <td>책 제목</td>
+                <td>작가</td>
+                <td>읽었는지</td>
+                <td>카테고리</td>
+                <td>수정</td>
+                <td>삭제</td>
             </tr>
             </thead>
             <tbody>
@@ -35,8 +36,9 @@
                 <td th:text="${book.title}"></td>
                 <td th:text="${book.author}"></td>
                 <td th:text="${book.readed}"></td>
-                <td><a href="#" th:href="@{/book/update/{id} (id=${book.id})}">수정</a></td>
-                <td><a href="#" th:href="@{/book/delete/{id} (id=${book.id})}">삭제</a></td>
+                <td>빈 카테고리</td>
+                <td><a href="#" th:href="@{/book/update/{id} (id=${book.id})}" style="color: blue">수정</a></td>
+                <td><a href="#" th:href="@{/book/delete/{id} (id=${book.id})}" style="color: blue">삭제</a></td>
             </tr>
             </tbody>
         </table>
