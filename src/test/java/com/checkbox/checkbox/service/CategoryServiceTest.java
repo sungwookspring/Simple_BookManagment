@@ -66,18 +66,7 @@ public class CategoryServiceTest {
         Category savedCategory = createCategory_checkId("테스트 카테고리");
 
         // when
-        BookCategoryRequestAddDto requestAddDto = new BookCategoryRequestAddDto();
-        requestAddDto.setBook_id(savedBook.getId());
-        requestAddDto.setCategory_id(savedCategory.getId());
-
-        Long savedBookCategoryId = bookCategoryService.save(requestAddDto);
-
-        //then
-        BookCategory findBookCategory = bookCategoryRepository.findById(savedBookCategoryId)
-                .orElseThrow(
-                        () -> new IllegalStateException("존재하지 않은 savedBookCategoryId")
-                );
-
+        BookCategory findBookCategory = createBookCategory(savedBook.getId(), savedCategory.getId());
 
         // Id 비교
         Long findCategoryId = findBookCategory.getCategory().getId();
@@ -92,6 +81,21 @@ public class CategoryServiceTest {
 
         Assertions.assertThat(findCategoryName).isEqualTo(savedCategory.getName());
         Assertions.assertThat(findBookName).isEqualTo(savedBook.getTitle());
+    }
+
+    private BookCategory createBookCategory(Long book_id, Long category_id){
+        BookCategoryRequestAddDto requestAddDto = new BookCategoryRequestAddDto();
+        requestAddDto.setBook_id(book_id);
+        requestAddDto.setCategory_id(category_id);
+
+        Long savedBookCategoryId = bookCategoryService.save(requestAddDto);
+
+        BookCategory findBookCategory = bookCategoryRepository.findById(savedBookCategoryId)
+                .orElseThrow(
+                        () -> new IllegalStateException("존재하지 않은 savedBookCategoryId")
+                );
+
+        return findBookCategory;
     }
 
     public Book createbook_checkId(String title, String author){
