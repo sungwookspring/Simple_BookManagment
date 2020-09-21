@@ -1,10 +1,7 @@
 # yaml파일 하나에 여러개 프로파일 관리
 * active에 적용할 프로파일 이름 설정
+
 ```
-spring:
-  profiles:
-    active: prod
----
 spring:
   profiles: dev
 
@@ -25,7 +22,11 @@ logging:
   level:
     org.hibernate.SQL: debug
     org.hibernate.type: trace
----
+```
+
+## 배포 프로파일.yml
+
+```
 spring:
   profiles: prod
 
@@ -49,9 +50,11 @@ logging:
     org.hibernate.type: trace
 ```
 
-# 파일을 여는 방식
-* 설정파일이름을 application-xx.yml로 생성
-* 
+# 프로파일 런타임 실행
+* 실행하고자 하는 프로파일 이름을 선택하여 환경변수로 주입
+```
+-Dspring.profiles.active=dev
+``` 
 
 # 참고자료
 * [1] 블로그: https://galid1.tistory.com/664
