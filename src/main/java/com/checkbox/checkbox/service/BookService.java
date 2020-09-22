@@ -2,6 +2,7 @@ package com.checkbox.checkbox.service;
 
 import com.checkbox.checkbox.domain.Book;
 import com.checkbox.checkbox.domain.BookCategory;
+import com.checkbox.checkbox.domain.Category;
 import com.checkbox.checkbox.domain.Dto.Book.BookRequestAddDto;
 import com.checkbox.checkbox.domain.Dto.Book.BookRequestUpdateDto;
 import com.checkbox.checkbox.domain.Dto.Book.BookResponseFindOneDto;
@@ -22,6 +23,8 @@ import java.util.stream.Collectors;
 @Slf4j
 public class BookService {
     private final BookRepository bookRepository;
+    private final CategoryService categoryService;
+    private final BookCategoryService bookCategoryService;
 
     @Transactional
     public Long save(BookRequestAddDto requestAddDto){
@@ -77,6 +80,22 @@ public class BookService {
     @Transactional
     public void setRelationship(Book book, BookCategory bookCategory){
         book.setRelationWithBookCategory(bookCategory);
+    }
+
+    @Transactional
+    public void setRelationship(String book_title, String category_name){
+        // 카테고리를 찾고
+        Book findBook = this.findByTitle(book_title);
+        Category findCategory = categoryService.findByName(category_name);
+
+        BookCategory bookCategory = BookCategory.builder()
+                .category(findCategory)
+                .build();
+
+        bookCategoryService.save(bookCategory);
+
+        // 연결
+        findBook.setRelationWithBookCategory(bookCategory);
     }
 
     @Transactional
