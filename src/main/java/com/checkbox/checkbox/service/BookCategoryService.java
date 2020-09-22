@@ -21,6 +21,11 @@ public class BookCategoryService {
     private final BookRepository bookRepository;
     private final CategoryRepository categoryRepository;
 
+    /***
+     * Dto기반 저장
+     * @param requestAddDto
+     * @return
+     */
     @Transactional
     public Long save(BookCategoryRequestAddDto requestAddDto){
         Book findBook = bookRepository.findById(requestAddDto.getBook_id())
@@ -43,6 +48,17 @@ public class BookCategoryService {
         findBook.setRelationWithBookCategory(new_bookcategory);
 
         return bookCategoryRepository.save(new_bookcategory).getId();
+    }
+
+    /***
+     * 엔티티 기반 저장
+     * @param bookCategory
+     * @return
+     */
+    @Transactional
+    public Long save(BookCategory bookCategory){
+        Long saveId = bookCategoryRepository.save(bookCategory).getId();
+        return saveId;
     }
 
     public List<BookCategory> findAll(){

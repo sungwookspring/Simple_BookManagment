@@ -1,6 +1,7 @@
 package com.checkbox.checkbox.service;
 
 import com.checkbox.checkbox.domain.Book;
+import com.checkbox.checkbox.domain.BookCategory;
 import com.checkbox.checkbox.domain.Dto.Book.BookRequestAddDto;
 import com.checkbox.checkbox.domain.Dto.Book.BookRequestUpdateDto;
 import com.checkbox.checkbox.domain.Dto.Book.BookResponseFindOneDto;
@@ -49,7 +50,17 @@ public class BookService {
                 .map(book -> new BookResponseListallDto(book))
                 .collect(Collectors.toList());
 
+
+
         return responseDto;
+    }
+
+    public Book findByTitle(String title){
+        Book findBook = bookRepository.findByTitle(title)
+                .orElseThrow(
+                        () -> new IllegalStateException("존재하지 않은 책")
+                );
+        return findBook;
     }
 
     public BookResponseFindOneDto findOneById(Long id){
@@ -61,6 +72,11 @@ public class BookService {
         return BookResponseFindOneDto.builder()
                 .entity(book)
                 .build();
+    }
+
+    @Transactional
+    public void setRelationship(Book book, BookCategory bookCategory){
+        book.setRelationWithBookCategory(bookCategory);
     }
 
     @Transactional
