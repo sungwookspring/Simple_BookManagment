@@ -25,4 +25,12 @@ public class CategoryService {
     public List<Category> findAll(){
         return categoryRepository.findAll();
     }
+
+    public Category findByName(String name){
+        Category findCategory = categoryRepository.findByName(name)
+                .orElseThrow(
+                        () -> new IllegalStateException("존재하지 않은 카테고리")
+                );
+        return findCategory;
+    }
 }
