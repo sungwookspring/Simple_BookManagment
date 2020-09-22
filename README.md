@@ -20,9 +20,10 @@ $ ./gradlew clean build -Dspring.profiles.active=prod
 > .\gradlew.bat clean build -Dspring.profiles.active=prod
 ```
 3.jar실행
+* prod.yml파일을 jar파일과 같은 경로에 복사한 후 명령어 실행
 ```
 $ cd ./build/libs
-$ java -jar checkbox-0.0.1-SNAPSHOT.jar --spring.profiles.active=../../src/main/resources/application-prod.yaml
+$ java -jar checkbox-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod 
 ```
 
 # 3. 목표
