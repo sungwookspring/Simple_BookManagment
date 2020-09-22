@@ -17,7 +17,7 @@ $ ./gradlew clean build -Dspring.profiles.active=prod
 ``` 
 * 윈도우
 ```
-> ./gradlew.bat clean build -Dspring.profiles.active=prod
+> .\gradlew.bat clean build -Dspring.profiles.active=prod
 ```
 3.jar실행
 ```
