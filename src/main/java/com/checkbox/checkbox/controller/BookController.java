@@ -37,12 +37,9 @@ public class BookController {
 
     @GetMapping("/book/list")
     public String listAll(Model model){
-        List<Book> books = bookService.findAll();
-        List<BookResponseListallDto> responseDto = books.stream()
-            .map(book -> new BookResponseListallDto(book))
-            .collect(Collectors.toList());
+        List<BookResponseListallDto> books = bookService.findAllForView();
+        model.addAttribute("books", books);
 
-        model.addAttribute("books", responseDto);
         return "book/list";
     }
 

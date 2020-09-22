@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional(readOnly = true)
@@ -28,10 +29,27 @@ public class BookService {
         return bookRepository.save(book).getId();
     }
 
+    /***
+     * 단순하게 모든 책을 조회
+     * @return
+     */
     public List<Book> findAll(){
         List<Book> books = bookRepository.findAll();
 
         return books;
+    }
+
+    /***
+     * 뷰에서 보여주기 위해 모든 책을 조회
+     *
+     */
+    public List<BookResponseListallDto> findAllForView(){
+        List<Book> books = bookRepository.findAll();
+        List<BookResponseListallDto> responseDto = books.stream()
+                .map(book -> new BookResponseListallDto(book))
+                .collect(Collectors.toList());
+
+        return responseDto;
     }
 
     public BookResponseFindOneDto findOneById(Long id){
