@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface BookRepository extends JpaRepository<Book, Long> {
-    @Query("select b from Book b")
+    @Query("select b from Book b join fetch b.bookCategories bc")
     List<Book> findAllWithCategoryName();
 
     Optional<Book> findByTitle(String title);
